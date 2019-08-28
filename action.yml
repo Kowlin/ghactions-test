@@ -1,12 +1,12 @@
-name: 'Container Action Template'
+name: 'Container action test'
 description: 'Get started with Container actions'
-author: 'GitHub'
+author: 'Kowlin'
 inputs: 
-  myInput:
-    description: 'Input to use'
-    default: 'world'
+  repo-token:
+    description: 'Github Repository Token'
+  team-name:
+    description: 'A team name who's reviews will either automatically be approved or declined'
 runs:
   using: 'docker'
   image: 'Dockerfile'
-  args:
-    - ${{ inputs.myInput }}
+
