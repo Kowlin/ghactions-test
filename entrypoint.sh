@@ -1,4 +1,3 @@
 #!/bin/sh
-
-python --version
-python ./script.py
+python3.7 --version
+python3.7 ./script.py
