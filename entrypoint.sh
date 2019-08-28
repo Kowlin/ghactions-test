@@ -1,3 +1,4 @@
-#!/bin/sh -l
+#!/bin/sh
 
-echo "hello $1"
+python --version
+python ./script.py
