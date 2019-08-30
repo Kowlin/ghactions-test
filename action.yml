@@ -1,7 +1,11 @@
-name: 'Container action test'
-description: 'Get started with Container actions'
+name: 'Pull Request Onbehalf Approver'
+description: 'Approve Pull requests onbehalf of team members who don't have write access.'
 author: 'Kowlin'
+inputs:
+  github_token:
+    description: 'The GITHUB_TOKEN secret env var.'
+  team_slug:
+    description: 'The team slug (which the team name with spaces replaced by dashes (-)) to approve onbehalf of.'
 runs:
   using: 'docker'
   image: 'Dockerfile'
-

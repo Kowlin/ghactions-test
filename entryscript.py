@@ -13,17 +13,20 @@ handler.setFormatter(formatter)
 logger.addHandler(handler)
 logger.setLevel(logging.INFO)
 
-logger.info("Logger Active.")
+logger.info("Logger Active.")  # TODO, remove this
+
+# Ensure that all required env vars exist.
+if "GITHUB_REPOSITORY" not in os.environ:
+    logger.error("GitHub repository not found. This should never happen in production")
+    exit(1)
+if "INPUT_GITHUB_TOKEN" not in os.environ:
+    logger.error("GitHub token not found. Please pass it in your workflow.")
+    exit(1)
+if "INPUT_TEAM_SLUG" not in os.environ:
+    logger.error("Team slug not found. Please pass it in your workflow.")
 
 with open(os.environ["GITHUB_EVENT_PATH"]) as event_file:
     event_json = json.load(event_file)
-
-if "GITHUB_REPOSITORY" not in os.environ:
-    logger.error("GitHub repository not found")
-    exit(1)
-if "GITHUB_TOKEN" not in os.environ:
-    logger.error("GitHub token not found.")
-    exit(1)
 
 if "ACTION_DEBUG" in os.environ:  # Set debugging level if present.
     logger.setLevel(logging.DEBUG)
@@ -35,5 +38,7 @@ if "ACTION_DEBUG" in os.environ:  # Set debugging level if present.
     logger.debug(event_json)
 
 client = Github(os.environ["GITHUB_TOKEN"], api_preview=True)
+
+
 
 exit(0)
