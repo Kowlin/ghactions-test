@@ -28,6 +28,6 @@ logger.debug("Running in Debug")
 
 client = Github(os.environ["GITHUB_TOKEN"], api_preview=True)
 
-logger.info(client.get_user().login)
+logger.info(client.get_user().name)
 
 exit(0)
