@@ -28,6 +28,7 @@ logger.debug("Running in Debug")
 
 client = Github(os.environ["GITHUB_TOKEN"], api_preview=True)
 
-logger.info(client.get_user().name)
+repo = client.get_repo("Kowlin/graphql-sandbox")
+repo.get_issue(2).create_comment("This is a comment made by a bot.")
 
 exit(0)
