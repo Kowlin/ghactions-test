@@ -8,4 +8,4 @@ COPY requirements.txt /requirements.txt
 RUN ["chmod", "+x", "/entryscript.py"]
 RUN ["pip3.7", "install", "-r", "requirements.txt"]
 
-ENTRYPOINT ["python3.7", "./entryscript.py"]
+ENTRYPOINT ["python3.7", "/entryscript.py"]
