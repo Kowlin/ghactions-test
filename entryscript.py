@@ -31,14 +31,13 @@ with open(os.environ["GITHUB_EVENT_PATH"]) as event_file:
 if "ACTION_DEBUG" in os.environ:  # Set debugging level if present.
     logger.setLevel(logging.DEBUG)
     logger.debug(f"--- DEBUG INFORMATION | {os.environ['GITHUB_WORKFLOW']} ---")
-    logger.debug(f"Token present: {'GITHUB_TOKEN' in os.environ}")
+    logger.debug(f"Token present: {'INPUT_GITHUB_TOKEN' in os.environ}")
     logger.debug(f"Repository: {os.environ['GITHUB_REPOSITORY']}")
+    logger.debug(f"Team slug: {os.environ['INPUT_TEAM_SLUG']}")
     logger.debug(f"Event json log: {os.environ['GITHUB_EVENT_PATH']}")
     logger.debug("---")
     logger.debug(event_json)
 
 client = Github(os.environ["GITHUB_TOKEN"], api_preview=True)
-
-
 
 exit(0)
